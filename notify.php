@@ -38,7 +38,7 @@ class WxpayService
         $postStr = file_get_contents('php://input');
 		//禁止引用外部xml实体
 		libxml_disable_entity_loader(true);        
-        $postObj = simplexml_load_string($postStr, 'SimpleXMLElement', LIBXML_NOCDATA);
+        $postObj = json_encode(simplexml_load_string($postStr, 'SimpleXMLElement', LIBXML_NOCDATA));
         if ($postObj === false) {
             die('parse xml error');
         }
